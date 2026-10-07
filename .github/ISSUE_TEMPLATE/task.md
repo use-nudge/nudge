@@ -1,6 +1,6 @@
 ---
 name: Task
-about: Create a task for Nudge.
+about: Track a Nudge engineering task
 title: ''
 labels: ''
 assignees: ''
@@ -8,6 +8,12 @@ type: Task
 
 ---
 
-## Description
+## Summary
 
-<!-- Describe what needs to be done. -->
+What needs to be done and why?
+
+## Acceptance Criteria
+
+- AC1. 
+- AC2. 
+- AC3.
