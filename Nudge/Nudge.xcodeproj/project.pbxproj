@@ -6,13 +6,35 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E6685492307DC63C00E36A44 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E6685491307DC63C00E36A44 /* FirebaseAuth */; };
+		E6685494307DC63C00E36A44 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E6685493307DC63C00E36A44 /* FirebaseCore */; };
+		E6685496307DC63C00E36A44 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E6685495307DC63C00E36A44 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E6685413307DB0E500E36A44 /* Nudge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nudge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E6685497307DC8DF00E36A44 /* Exceptions for "Nudge" folder in "Nudge" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/.gitkeep,
+				Services/.gitkeep,
+				Utilities/.gitkeep,
+				ViewModels/.gitkeep,
+			);
+			target = E6685412307DB0E500E36A44 /* Nudge */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E6685415307DB0E500E36A44 /* Nudge */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E6685497307DC8DF00E36A44 /* Exceptions for "Nudge" folder in "Nudge" target */,
+			);
 			path = Nudge;
 			sourceTree = "<group>";
 		};
@@ -22,6 +44,9 @@
 		E6685410307DB0E500E36A44 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				E6685494307DC63C00E36A44 /* FirebaseCore in Frameworks */,
+				E6685492307DC63C00E36A44 /* FirebaseAuth in Frameworks */,
+				E6685496307DC63C00E36A44 /* FirebaseFirestore in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -60,6 +85,11 @@
 				E6685415307DB0E500E36A44 /* Nudge */,
 			);
 			name = Nudge;
+			packageProductDependencies = (
+				E6685491307DC63C00E36A44 /* FirebaseAuth */,
+				E6685493307DC63C00E36A44 /* FirebaseCore */,
+				E6685495307DC63C00E36A44 /* FirebaseFirestore */,
+			);
 			productName = Nudge;
 			productReference = E6685413307DB0E500E36A44 /* Nudge.app */;
 			productType = "com.apple.product-type.application";
@@ -88,6 +118,9 @@
 			);
 			mainGroup = E668540A307DB0E500E36A44;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E6685490307DC63C00E36A44 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E6685414307DB0E500E36A44 /* Products */;
 			projectDirPath = "";
@@ -316,6 +349,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E6685490307DC63C00E36A44 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E6685491307DC63C00E36A44 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6685490307DC63C00E36A44 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E6685493307DC63C00E36A44 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6685490307DC63C00E36A44 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E6685495307DC63C00E36A44 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6685490307DC63C00E36A44 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E668540B307DB0E500E36A44 /* Project object */;
 	validationLevel = 1;

@@ -16,6 +16,22 @@ Nudge will use SwiftUI with a MVVM (Model-View-ViewModel) architecture (can chan
 
 Remove the .gitkeep file from the folder once actual files are added
 
+## Firebase
+
+Nudge uses Firebase for authentication and cloud data storage.
+
+- **Firebase Authentication:** Email/Password sign-in
+- **Cloud Firestore:** Stores application data and supports real-time updates
+
+### Configuration
+
+- Firebase dependencies are managed through Swift Package Manager
+- `GoogleService-Info.plist` contains the configuration for the shared Firebase project
+- Firebase is initialized in `NudgeApp.swift`
+- Cloud Firestore currently uses restrictive security rules
+
 ## Design
 
 The initial app design is in [here](docs/nudge-design.png).
+
+
