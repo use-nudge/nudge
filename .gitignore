@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+
+# Swift Package Manager
+.swiftpm/
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
