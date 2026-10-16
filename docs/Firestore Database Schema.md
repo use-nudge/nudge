@@ -22,7 +22,6 @@ The document ID is the user's Firebase Authentication UID.
 |---|---|---|
 | name | String | Course name |
 | description | String | Course description |
-| creatorId | String | UID of the original creator |
 | joinCode | String | Code used to join the course |
 | createdAt | Timestamp | Course creation time |
 
