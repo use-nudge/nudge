@@ -20,7 +20,6 @@
 		E6685497307DC8DF00E36A44 /* Exceptions for "Nudge" folder in "Nudge" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Models/.gitkeep,
 				Services/.gitkeep,
 				Utilities/.gitkeep,
 				ViewModels/.gitkeep,
