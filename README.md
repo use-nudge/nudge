@@ -22,6 +22,7 @@ Nudge uses Firebase for authentication and cloud data storage.
 
 - **Firebase Authentication:** Email/Password sign-in
 - **Cloud Firestore:** Stores application data and supports real-time updates
+- **Database Schema:** Firestore collections, document structures, and data models are documented in [docs/firestore-schema.md](docs/firestore-schema.md).
 
 ### Configuration
 
