@@ -26,9 +26,11 @@ struct CoursesDashboardView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {}) {
                     Image(systemName: "plus")
-                        .font(.system(size: 22, weight: .regular))
+                        .font(.system(size: AppTheme.Icon.large))
                         .foregroundStyle(AppTheme.Colors.textPrimary)
                 }
+                .frame(minWidth: AppTheme.Control.minimumTapTarget,
+                       minHeight: AppTheme.Control.minimumTapTarget)
                 .accessibilityLabel("Add course")
             }
         }
@@ -55,6 +57,14 @@ private struct DashboardGreetingView: View {
             return "Good evening, \(firstName)"
         }
     }
+    
+    private var initials: String {
+            name.split(separator: " ")
+                .prefix(2)
+                .compactMap(\.first)
+                .map(String.init)
+                .joined()
+        }
 
     var body: some View {
         HStack(spacing: AppTheme.Spacing.large) {
@@ -72,21 +82,13 @@ private struct DashboardGreetingView: View {
             Spacer(minLength: AppTheme.Spacing.small)
 
             Text(initials)
-                .font(.system(size: 16, weight: .bold))
+                .font(AppTheme.Typography.cardTitle)
                 .foregroundStyle(AppTheme.Colors.primaryDark)
-                .frame(width: 52, height: 52)
+                .frame(width: AppTheme.Control.buttonHeight, height: AppTheme.Control.buttonHeight)
                 .background(AppTheme.Colors.primarySoft, in: Circle())
                 .accessibilityLabel("Profile for \(name)")
         }
         .padding(.bottom, AppTheme.Spacing.extraLarge)
-    }
-
-    private var initials: String {
-        name.split(separator: " ")
-            .prefix(2)
-            .compactMap(\.first)
-            .map(String.init)
-            .joined()
     }
 }
 
@@ -112,6 +114,7 @@ private struct NotificationCarousel: View {
             .scrollTargetBehavior(.viewAligned)
         }
         .frame(height: 134)
+        .padding(.vertical, AppTheme.Spacing.large)
     }
 }
 
@@ -124,10 +127,10 @@ private struct NotificationCardView: View {
         Button(action: {}) {
             HStack(spacing: AppTheme.Spacing.medium) {
                 Image(systemName: "bell")
-                    .font(.system(size: 17, weight: .medium))
+                    .font(.system(size: AppTheme.Icon.small, weight: .medium))
                     .foregroundStyle(.white)
-                    .frame(width: 48, height: 48)
-                    .background(AppTheme.Colors.primary, in: RoundedRectangle(cornerRadius: 15))
+                    .frame(width: AppTheme.Control.fieldHeight, height: AppTheme.Control.fieldHeight)
+                    .background(AppTheme.Colors.primary, in: RoundedRectangle(cornerRadius: AppTheme.Radius.small))
 
                 VStack(alignment: .leading, spacing: AppTheme.Spacing.extraSmall) {
                     Text(title)
@@ -141,29 +144,19 @@ private struct NotificationCardView: View {
                         .lineLimit(1)
 
                     Text(time)
-                        .font(.caption2)
+                        .font(AppTheme.Typography.caption)
                         .foregroundStyle(AppTheme.Colors.textTertiary)
                 }
 
                 Spacer(minLength: 0)
 
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: AppTheme.Icon.small, weight: .semibold))
                     .foregroundStyle(AppTheme.Colors.textTertiary)
             }
             .padding(AppTheme.Spacing.large)
             .frame(maxHeight: .infinity)
-            .background(AppTheme.Colors.surface)
-            .overlay {
-                RoundedRectangle(cornerRadius: AppTheme.Radius.card)
-                    .stroke(AppTheme.Colors.primarySoft)
-            }
-            .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.card))
-            .shadow(
-                color: AppTheme.Shadow.color,
-                radius: AppTheme.Shadow.radius,
-                y: AppTheme.Shadow.y
-            )
+            .nudgeCard()
         }
         .buttonStyle(.plain)
     }
@@ -175,8 +168,9 @@ private struct NotificationLink: View {
             HStack(spacing: AppTheme.Spacing.small) {
                 Text("View all notifications")
                 Image(systemName: "arrow.right")
+                    .font(.system(size: AppTheme.Icon.small))
             }
-            .font(.system(size: 14, weight: .bold))
+            .font(AppTheme.Typography.cardTitle)
             .foregroundStyle(AppTheme.Colors.primary)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
@@ -190,16 +184,8 @@ private struct CoursesSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.medium) {
-            HStack {
-                Text("Your courses")
-                    .font(AppTheme.Typography.sectionTitle)
-                    .foregroundStyle(AppTheme.Colors.textPrimary)
-
-                Spacer()
-
-                Button("Join course", action: {})
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundStyle(AppTheme.Colors.primary)
+            NudgeSectionHeader(title: "Your courses", actionTitle: "Join course") {
+                // join course action
             }
             .padding(.bottom, AppTheme.Spacing.small)
 
@@ -222,12 +208,16 @@ private struct CourseCardView: View {
     let role: String
     let sessionSummary: String
     let usesCoralAccent: Bool
+    
+    private var courseInitials: String {
+        code.split(separator: " ").first.map(String.init) ?? code
+    }
 
     var body: some View {
         Button(action: {}) {
             HStack(spacing: AppTheme.Spacing.large) {
                 Text(courseInitials)
-                    .font(.system(size: 17, weight: .bold))
+                    .font(AppTheme.Typography.cardTitle)
                     .foregroundStyle(usesCoralAccent ? AppTheme.Colors.coralText : AppTheme.Colors.primaryDark)
                     .frame(width: 58, height: 66)
                     .background(
@@ -243,7 +233,7 @@ private struct CourseCardView: View {
                         .lineLimit(1)
 
                     Text(name)
-                        .font(.system(size: 18, weight: .regular))
+                        .font(AppTheme.Typography.cardTitle)
                         .foregroundStyle(AppTheme.Colors.textPrimary)
                         .lineLimit(1)
 
@@ -256,24 +246,12 @@ private struct CourseCardView: View {
                 Spacer(minLength: 0)
 
                 Image(systemName: "chevron.right")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: AppTheme.Icon.medium, weight: .semibold))
                     .foregroundStyle(AppTheme.Colors.textPrimary)
             }
-            .padding(AppTheme.Spacing.large)
-            .frame(maxWidth: .infinity, minHeight: 118, alignment: .leading)
-            .background(AppTheme.Colors.surface)
-            .overlay {
-                RoundedRectangle(cornerRadius: AppTheme.Radius.card)
-                    .stroke(AppTheme.Colors.border)
-            }
-            .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.card))
-            .shadow(color: AppTheme.Shadow.color, radius: 10, y: 5)
+            .nudgeCard()
         }
         .buttonStyle(.plain)
-    }
-
-    private var courseInitials: String {
-        code.split(separator: " ").first.map(String.init) ?? code
     }
 }
 
@@ -305,26 +283,21 @@ private struct DashboardActionCard: View {
         Button(action: {}) {
             VStack(alignment: .leading, spacing: AppTheme.Spacing.medium) {
                 Image(systemName: systemImage)
-                    .font(.system(size: 23, weight: .regular))
+                    .font(.system(size: AppTheme.Icon.large))
                     .foregroundStyle(AppTheme.Colors.primary)
 
                 Spacer(minLength: 0)
 
                 Text(title)
-                    .font(.system(size: 17, weight: .bold))
+                    .font(AppTheme.Typography.cardTitle)
                     .foregroundStyle(AppTheme.Colors.textPrimary)
 
                 Text(subtitle)
                     .font(AppTheme.Typography.caption)
                     .foregroundStyle(AppTheme.Colors.textSecondary)
             }
-            .padding(AppTheme.Spacing.large)
             .frame(maxWidth: .infinity, minHeight: 142, alignment: .leading)
-            .background(AppTheme.Colors.surface)
-            .overlay {
-                RoundedRectangle(cornerRadius: AppTheme.Radius.card)
-                    .stroke(AppTheme.Colors.border)
-            }
+            .nudgeCard()
         }
         .buttonStyle(.plain)
     }
@@ -334,12 +307,12 @@ private struct NewAccountHintView: View {
     var body: some View {
         HStack(alignment: .top, spacing: AppTheme.Spacing.large) {
             Image(systemName: "book.closed")
-                .font(.system(size: 21))
+                .font(.system(size: AppTheme.Icon.medium))
                 .foregroundStyle(AppTheme.Colors.textTertiary)
 
             VStack(alignment: .leading, spacing: AppTheme.Spacing.extraSmall) {
                 Text("New account?")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(AppTheme.Typography.cardTitle)
                     .foregroundStyle(AppTheme.Colors.textPrimary)
 
                 Text("Your joined and created courses will appear here.")
@@ -349,15 +322,8 @@ private struct NewAccountHintView: View {
 
             Spacer()
         }
-        .padding(AppTheme.Spacing.large)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .overlay {
-            RoundedRectangle(cornerRadius: AppTheme.Radius.card)
-                .stroke(
-                    AppTheme.Colors.border,
-                    style: StrokeStyle(lineWidth: 1, dash: [4])
-                )
-        }
+        .nudgeCard(type: .dashed)
         .padding(.top, AppTheme.Spacing.extraLarge)
     }
 }
