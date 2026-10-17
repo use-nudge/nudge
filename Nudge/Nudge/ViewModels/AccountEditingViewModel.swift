@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+// Handles the account editing screen, validation, loading, success/errors, and calls into services
 @MainActor
 final class AccountViewModel: ObservableObject {
 

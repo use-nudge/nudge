@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+// Account Editing screen
 struct AccountEditingView: View {
     // Account information
     @State private var name = ""
