@@ -12,6 +12,7 @@ struct AppUser: Codable, Identifiable {
     @DocumentID var id: String?
 
     var name: String
+    var displayName: String?
     var email: String
     var createdAt: Date
 }
