@@ -1,3 +1,5 @@
+// xcode: set sdk=iOS
+
 //
 //  NudgeApp.swift
 //  Nudge
@@ -24,9 +26,7 @@ struct NudgeApp: App {
 
   var body: some Scene {
     WindowGroup {
-      NavigationView {
-        ContentView()
-      }
+      ContentView()
     }
   }
 }

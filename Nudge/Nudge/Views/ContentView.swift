@@ -1,21 +1,42 @@
-//
-//  ContentView.swift
-//  Nudge
-//
-//  Created by Felipe Benitez on 10/12/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            NavigationStack {
+                CoursesDashboardView(
+                    user: MockData.user,
+                    notifications: MockData.notifications,
+                    courses: MockData.courses
+                )
+            }
+            .tabItem {
+                Label("Courses", systemImage: "book.closed")
+            }
+
+            PlaceholderTabView(title: "My Sessions")
+                .tabItem {
+                    Label("My Sessions", systemImage: "calendar")
+                }
+
+            PlaceholderTabView(title: "Settings")
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape")
+                }
         }
-        .padding()
+        .tint(AppTheme.Colors.primary)
+    }
+}
+
+private struct PlaceholderTabView: View {
+    let title: LocalizedStringKey
+
+    var body: some View {
+        Text(title)
+            .font(.title2.weight(.semibold))
+            .foregroundStyle(AppTheme.Colors.textPrimary)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppTheme.Colors.surface)
     }
 }
 
