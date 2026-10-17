@@ -18,7 +18,7 @@ enum AppTheme {
         static let border = Color(red: 231 / 255, green: 229 / 255, blue: 236 / 255)
         static let coralSoft = Color(red: 255 / 255, green: 235 / 255, blue: 228 / 255)
         static let coralText = Color(red: 170 / 255, green: 76 / 255, blue: 45 / 255)
-        static let success = Color(red: 34 / 255, green: 139 / 255, blue: 94 / 225)
+        static let success = Color(red: 34 / 255, green: 139 / 255, blue: 94 / 255)
         static let successSoft = Color(red: 232 / 255, green: 247 / 255, blue: 239 / 255)
     }
     
@@ -31,7 +31,7 @@ enum AppTheme {
         static let greeting = Font.system(size: 27, weight: .regular, design: .default)
         
         // Section headings
-        static let sectionTitle = Font.system(size: 22, weight: .regular)
+        static let sectionTitle = Font.system(size: 22, weight: .bold)
         
         // Titles inside cards
         static let cardTitle = Font.system(size: 17, weight: .semibold)

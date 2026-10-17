@@ -285,7 +285,7 @@ struct NudgeSectionHeader: View {
                     actionTitle,
                     action: action
                 )
-                .font(AppTheme.Typography.body)
+                .font(AppTheme.Typography.cardTitle)
                 .foregroundStyle(
                     AppTheme.Colors.primary
                 )
