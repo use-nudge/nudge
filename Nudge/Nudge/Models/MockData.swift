@@ -30,6 +30,7 @@ struct DashboardNotification: Identifiable {
 enum MockData {
     static let user = AppUser(
         name: "Alex Rivera",
+        displayName: "Alex R.",
         email: "alex.rivera@utexas.edu",
         createdAt: Date()
     )
